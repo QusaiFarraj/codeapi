@@ -21,6 +21,7 @@ $container['view'] = function ($c) {
     // add global vars
     $auth = $c['auth']->user();
     $view->getEnvironment()->addGlobal('auth', $auth);
+    $view->getEnvironment()->addGlobal('baseUrl', $c['request']->getUri()->getHost());
 
     return $view;
 };
