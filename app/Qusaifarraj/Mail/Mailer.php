@@ -20,10 +20,9 @@ class Mailer {
 
     public function send($template, $data, $callback){
 
-       $message = new Message($this->mailer);
+        $message = new Message($this->mailer);
 
-        $this->view->appendData($data);
-        $message->body($this->view->render($template));
+        $message->body($this->view->render(new \Slim\Http\Response(), $template, $data));
         
         call_user_func($callback, $message);
 

@@ -2,8 +2,9 @@
 
 namespace Qusaifarraj\Helpers;
 
+
 /**
-* 
+* Hash class that manages password and identifire hashing 
 */
 class Hash
 {
@@ -18,8 +19,8 @@ class Hash
     public function password($password){
         return password_hash(
             $password, 
-            $this->config->get('app.hash.algo'), 
-            ['cost' => $this->config->get('app.hash.cost')]
+            $this->config['algo'], 
+            ['cost' => $this->config['cost']]
         );
     }
 

@@ -1,9 +1,9 @@
 <?php
 
 
-namespace Qusaifarraj\User;
+namespace Qusaifarraj\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use \Illuminate\Database\Eloquent\Model;
 
 
 /**

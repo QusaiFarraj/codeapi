@@ -1,18 +1,18 @@
 <?php
 
-namespace Qusaifarraj\User;
+namespace Qusaifarraj\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use \Illuminate\Database\Eloquent\Model;
 
-class User extends Model{
-
+class User extends Model
+{
     protected $table = 'users';
 
     protected $fillable =[
+        'username',
         'first_name',
         'last_name',
         'email',
-        'username',
         'password',
         'active',
         'active_hash',
@@ -35,12 +35,18 @@ class User extends Model{
         return $this->getFullName() ?: $this->username;
     }
 
-    public function activateAccount(){
+    public function activateAccount($value, $hash){
         $this->update([
-            'active' => true,
-            'active_hash' => null
+            'active' => $value,
+            'active_hash' => $hash
         ]);
     }
+
+    public function deactivateAccount($hash = null)
+    {
+        $this->activateAccount(false, $hash);
+    }
+
 
     public function getAvatarUrl($options = []){
         
@@ -50,7 +56,7 @@ class User extends Model{
     }
 
     public function updateRememberCredentials($identifier, $token){
-        $this->update([
+        return $this->update([
             'remember_identifier' => $identifier,
             'remember_token' => $token
         ]);
@@ -71,6 +77,6 @@ class User extends Model{
 
     public function permissions(){
 
-        return $this->hasOne('Qusaifarraj\Models\Permission', 'user_id');
+        return $this->hasOne('\Qusaifarraj\Models\UserPermission', 'user_id');
     }
 }
