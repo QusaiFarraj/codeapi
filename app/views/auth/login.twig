@@ -1,9 +1,12 @@
-{% extends 'templates/default.php' %}
+{% extends 'templates/default.twig' %}
 
 {% block title %} Login {% endblock %}
 
 {% block content %}
-    <form action="{{ urlFor('login.post') }}" method="post" autocomplete="off">
+    <form action="{{ path_for('login.post') }}" method="post" autocomplete="off">
+        <div>
+            {{ csrf.field }}
+        </div>
         <div>
             <label for="identifer">Username/Email</label>
             <input type="text" name="identifier" id="identifer">
@@ -15,13 +18,11 @@
             {% if errors.first('password') %} {{ errors.first('password') }} {% endif %}
         </div>
         <div>
-            <input type="checkbox" name="remember" id="remember"> <label for="remember">Remember Me</label>
+            <input type="checkbox" name="remember" id="remember" unchecked> <label for="remember">Remember Me</label>
         </div>
         <div>
             <input type="submit" name="Login">
         </div>
-
-        <a href="{{ urlFor('password.recover') }}">Forgot your password?</a>
-        <input type="hidden" name="{{ csrf_key }}" value="{{ csrf_token }}">
+        <a href="{{ path_for('password.recover') }}">Forgot your password?</a>
     </form>
 {% endblock %}

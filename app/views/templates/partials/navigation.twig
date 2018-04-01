@@ -1,0 +1,20 @@
+{% if auth %}
+    <p>Hello, {{ auth.getFullNameOrUsername() }}!</p>
+    <img src="{{ auth.getAvatarUrl() }}">
+{% endif %}
+<ul>
+    <li><a href="{{ path_for('home') }}">Home</a></li>
+
+    {% if auth %}
+        <li><a href="{{ path_for('user.profile', {username: auth.username}) }}">Your Profile</a></li>
+        <li><a href="{{ path_for('password.change') }}">Change Password</a></li>
+        <li><a href="{{ path_for('logout') }}">Logout</a></li>
+        {% if auth.isAdmin() %}
+            <li><a href="{{ path_for('admin.dashboard') }}">Admin Area</a></li>
+            <li><a href="{{ path_for('admin.users') }}">All User</a></li>
+        {% endif %}
+    {% else %}
+        <li><a href="{{ path_for('register') }}">Register</a></li>
+        <li><a href="{{ path_for('login') }}">Login</a></li>
+    {% endif %}
+</ul>

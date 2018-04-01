@@ -1,9 +1,12 @@
-{% extends 'templates/default.php' %}
+{% extends 'templates/default.twig' %}
 
 {% block title %} Reset Password {% endblock %}
 
 {% block content %}
-    <form method="post" action="{{ urlFor('password.reset.post') }}?email={{ email }}&identifier={{ identifier|url_encode }}">
+    <form method="post" action="{{ path_for('password.reset.post') }}?email={{ email }}&identifier={{ identifier|url_encode }}">
+        <div>
+            {{ csrf.field }}
+        </div>
         <div>
             <label for="password">Password</label>
             <input type="password" name="password" id="password">
@@ -17,6 +20,5 @@
         <div>
             <input type="submit" name="Reset">
         </div>
-        <input type="hidden" name="{{ csrf_key }}" value="{{ csrf_token }}">
     </form>
 {% endblock %}

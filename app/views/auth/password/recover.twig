@@ -1,10 +1,13 @@
-{% extends 'templates/default.php' %}
+{% extends 'templates/default.twig' %}
 
 {% block title %} Recover Password {% endblock %}
 
 {% block content %}
 
-    <form method="post" action="{{ urlFor('password.recover.post') }}">
+    <form method="post" action="{{ path_for('password.recover.post') }}">
+        <div>
+            {{ csrf.field }}
+        </div>
         <div>
             <label for="email">Email</label>
             <input type="text" name="email" id="email" {% if request.post('email') %}{{ request.post('email') }}{% endif %}>
@@ -13,7 +16,6 @@
         <div>
             <input type="submit" value="Request reset">
         </div>
-        <input type="hidden" name="{{ csrf_key }}" value="{{ csrf_token }}">
     </form>
 
 {% endblock %}

@@ -1,4 +1,4 @@
-{% extends 'templates/default.php' %}
+{% extends 'templates/default.twig' %}
 
 {% block title %} All users {% endblock %}
 
@@ -11,7 +11,7 @@
     {% else %}
         {% for user in users %}
             <div class="user">
-                <a href="{{ urlFor('user.profile', {username: user.username}) }}">{{ user.username }}</a>
+                <a href="{{ path_for('user.profile', {username: user.username}) }}">{{ user.username }}</a>
                 {% if user.getFullName() %}
                     ({{ user.getFullName() }})
                 {% endif %}

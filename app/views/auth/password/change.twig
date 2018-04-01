@@ -1,10 +1,13 @@
-{% extends 'templates/default.php' %}
+{% extends 'templates/default.twig' %}
 
 {% block title %} Change Password {% endblock %}
 
 {% block content %}
 
-    <form method="post" action="{{ urlFor('password.change.post') }}">
+    <form method="post" action="{{ path_for('password.change.post') }}">
+        <div>
+            {{ csrf.field }}
+        </div>
         <div>
             <label for="password_old">Old Password</label>
             <input type="password" name="password_old" id="password_old">
@@ -23,7 +26,6 @@
         <div>
             <input type="submit" value="Change">
         </div>
-        <input type="hidden" name="{{ csrf_key }}" value="{{ csrf_token }}">
     </form>
 
 {% endblock %}

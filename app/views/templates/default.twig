@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CodeSampling | {% block title %}{% endblock %}</title>
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+</head>
+<body>
+    {% include 'templates/partials/messages.twig' %}
+    {% include 'templates/partials/navigation.twig' %}
+    {% block content %}{% endblock %}
+</body>
+</html>
