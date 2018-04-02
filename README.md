@@ -1,4 +1,4 @@
-# codeapi
+# Codesampling
 
 This is a sample code that respresents a simple auth system with mailing option if activated.
 
