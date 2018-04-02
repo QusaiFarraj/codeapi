@@ -10,22 +10,22 @@
         <div>
             <label for="email">Email</label>
             <input type="text" name="email" id="email" {% if request.email %} value="{{ request.email }}" {% endif %}>
-            {% if errors.has('email') %} {{ errors.first('email') }} {% endif %}
+            {% if errors.has('email') %} <span style="color: red;">{{ errors.first('email') }}</span> {% endif %}
         </div>
         <div>
             <label for="username">Username</label>
             <input type="text" name="username" id="username" {% if request.username %} value="{{ request.username }}" {% endif %}>
-            {% if errors.has('username') %} {{ errors.first('username') }} {% endif %}
+            {% if errors.has('username') %} <span style="color: red;">{{ errors.first('username') }}</span> {% endif %}
         </div>
         <div>
             <label for="password">Password</label>
             <input type="Password" name="password" id="password">
-            {% if errors.has('password') %} {{ errors.first('password') }} {% endif %}
+            {% if errors.has('password') %} <span style="color: red;">{{ errors.first('password') }}</span> {% endif %}
         </div>
         <div>
             <label for="password_confirm">Confirm Password</label>
             <input type="Password" name="password_confirm" id="password_confirm">
-            {% if errors.has('password_confirm') %} {{ errors.first('password_confirm') }} {% endif %}
+            {% if errors.has('password_confirm') %} <span style="color: red;">{{ errors.first('password_confirm') }}</span> {% endif %}
         </div>
         <div>
             <div class="g-recaptcha" data-sitekey="6LdiDFAUAAAAAGc6D0_n95R_Ff7UwrbfVtLSBNNG"></div>

@@ -10,12 +10,12 @@
         <div>
             <label for="identifer">Username/Email</label>
             <input type="text" name="identifier" id="identifer">
-            {% if errors.first('identifier') %} {{ errors.first('identifier') }} {% endif %}
+            {% if errors.first('identifier') %} <span style="color: red;">{{ errors.first('identifier') }}</span> {% endif %}
         </div>
         <div>
             <label for="password">Password</label>
             <input type="password" name="password" id="password">
-            {% if errors.first('password') %} {{ errors.first('password') }} {% endif %}
+            {% if errors.first('password') %} <span style="color: red;">{{ errors.first('password') }}</span> {% endif %}
         </div>
         <div>
             <input type="checkbox" name="remember" id="remember" unchecked> <label for="remember">Remember Me</label>
